@@ -1,4 +1,4 @@
-//% flatten Array
+// Flatten Array
 
 function flattenArray(arr) {
   let newFlattenArray = [];
@@ -14,18 +14,14 @@ function flattenArray(arr) {
   helper(arr);
   return newFlattenArray;
 }
-const array = [1, [2], [3, [4, 5, [6, [7, [8, [9]]]]]], [10]];
-console.log(flattenArray(array));
-
-//%factorial
+// Factorial
 
 function factorial(n) {
   if (n === 0) return 1;
   return n * factorial(n - 1);
 }
-console.log(factorial(5));
 
-//%polyfill for Map
+// Polyfill for Map
 
 Array.prototype.myMap = function (cb) {
   let temp = [];
@@ -39,9 +35,8 @@ const num = [1, 2, 3];
 const newNum = num.myMap((num) => {
   return num * 3;
 });
-console.log("map", newNum);
 
-//%polyfill for Filter
+// polyfill for Filter
 
 Array.prototype.myFilter = function (cb) {
   let temp = [];
@@ -54,8 +49,6 @@ const num1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 let result = num1.myFilter((num) => {
   return num > 10;
 });
-
-console.log(result);
 
 //%polyfill for Reduce
 
@@ -93,7 +86,7 @@ Function.prototype.myCall = function (context = {}, ...args) {
   context.fn = this;
 };
 
-//%isPalindrome
+// isPalindrome 123===321
 
 console.log(newNum);
 const isPalindrome = function (x) {
@@ -107,7 +100,6 @@ const isPalindrome = function (x) {
   }
   return org === reversed;
 };
-console.log(isPalindrome(12321));
 
 //% Fibonacci Number
 
@@ -118,14 +110,12 @@ var fibonacciNumber = function (n) {
   }
   return arr;
 };
-console.log(fibonacciNumber(12));
 
 const fib = function (n) {
   if (n <= 1) return n;
   let res = fib(n - 1) + fib(n - 2);
   return res;
 };
-console.log(fib(7));
 
 // Valid Anagram
 
@@ -154,7 +144,7 @@ const isAnagram1 = function (s, t) {
 };
 
 console.log(typeof typeof isAnagram("rajesh1", "rjaes1h"));
-
+// Find index of target value in array
 function findIndex(num, target) {
   for (let i = 0; i < num.length; i++) {
     for (let j = i + 1; j < num.length; j++) {
@@ -174,11 +164,29 @@ function findIndex(num, target) {
 
 let res = findIndex([1, 2, 3, 4, 5, 5, 6], 9);
 console.log(res);
+// Find maximum minimum value in array
+let max = Math.max(...arr);
+let min = Math.min(...arr);
+// Polyfill debounce
+function debounce(fn, delay) {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.apply(this, args);
+    }, delay);
+  };
+}
 
-Array.prototype.myMap = function (callback) {
-  let temp = [];
-  for (let i = 0; i < this.length; i++) {
-    temp.push(callback(this[i]), i, this);
-  }
-  return temp;
-};
+//Polyfill  throttle
+function throttle(fn, delay) {
+  let lastCall = 0;
+  return function (...args) {
+    const now = Date.now();
+    console.log(now);
+    if (now - lastCall > delay) {
+      fn.apply(this, args);
+      lastCall = now;
+    }
+  };
+}
