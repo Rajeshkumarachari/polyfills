@@ -1,5 +1,4 @@
 // Flatten Array
-
 function flattenArray(arr) {
   let newFlattenArray = [];
   function helper(arr) {
@@ -64,7 +63,7 @@ const num2 = [1, 2, 3, 4, 5];
 const reduceValue = num2.myReduce((acc, curr, i, arr) => {
   return acc + curr;
 });
-console.log(reduceValue);
+// console.log(reduceValue);
 
 //%polyfill for Call
 let car = {
@@ -72,9 +71,9 @@ let car = {
   company: "BMW",
 };
 function purchaseCar(currency, price) {
-  console.log(
-    `I have purchased ${this.color}- ${this.company} Car for ${currency} ${price}`
-  );
+  // console.log(
+  //   `I have purchased ${this.color}- ${this.company} Car for ${currency} ${price}`
+  // );
 }
 
 purchaseCar(car, "₹", 5000000);
@@ -88,7 +87,7 @@ Function.prototype.myCall = function (context = {}, ...args) {
 
 // isPalindrome 123===321
 
-console.log(newNum);
+// console.log(newNum);
 const isPalindrome = function (x) {
   if (x < 0) return 1;
   let org = x;
@@ -121,7 +120,7 @@ const fib = function (n) {
 
 let name = "RAJESH";
 for (let i = 0; i < name.length; i++) {
-  console.log(name[i]);
+  // console.log(name[i]);
 }
 
 const isAnagram = function (s, t) {
@@ -143,7 +142,7 @@ const isAnagram1 = function (s, t) {
   return true;
 };
 
-console.log(typeof typeof isAnagram("rajesh1", "rjaes1h"));
+// console.log(typeof typeof isAnagram("rajesh1", "rjaes1h"));
 // Find index of target value in array
 function findIndex(num, target) {
   for (let i = 0; i < num.length; i++) {
@@ -163,10 +162,10 @@ function findIndex(num, target) {
 }
 
 let res = findIndex([1, 2, 3, 4, 5, 5, 6], 9);
-console.log(res);
+// console.log(res);
 // Find maximum minimum value in array
-let max = Math.max(...arr);
-let min = Math.min(...arr);
+// let max = Math.max(...arr);
+// let min = Math.min(...arr);
 // Polyfill debounce
 function debounce(fn, delay) {
   let timer;
@@ -190,3 +189,47 @@ function throttle(fn, delay) {
     }
   };
 }
+// Convert two arrays into object one as key and another array as its values
+let names = ["one", "two", "three"];
+let values = [1, 2, 3];
+
+let array = names.map((k, i) => [k, values[i]]); //[["one",1],["two",2],["three",3]]
+let obj = Object.fromEntries(array); //{one: 1, two: 2, three: 3}
+//Object.fromEntries convert the iterable array into objects
+// console.log(array);
+
+class Queue {
+  constructor() {
+    this.item = [];
+  }
+  enqueue(element) {
+    this.item.push(element);
+  }
+  dequeue() {
+    return this.item.shift();
+  }
+  isEmpty() {
+    return this.item.length === 0;
+  }
+  peek() {
+    if (!this.isEmpty()) {
+      return this.item[0];
+    }
+    return null;
+  }
+  size() {
+    return this.item.length;
+  }
+  print() {
+    console.log(this.item);
+  }
+}
+
+const queue = new Queue();
+
+console.log(queue.isEmpty());
+queue.enqueue(1);
+queue.enqueue(2);
+queue.print();
+queue.dequeue();
+queue.print();
